@@ -1,0 +1,26 @@
+<div
+  class="container-sm p-0 m-3 border border-0 rounded shadow bg-body"
+  style="max-width: 48rem"
+>
+  <div class="p-3">
+    <span>{{ post.created_at | date }}</span>
+    <button
+      class="btn ml-auto"
+      [class.btn-primary]="isBookmarked"
+      (click)="onBookmarkButtonClick()"
+    >
+      bookmark
+    </button>
+    <img class="avatar" [src]="post.account.avatar" />
+    <h3>{{ post.account.display_name }}</h3>
+    <p>{{ post.account.username }}</p>
+  </div>
+  <img
+    class="w-100"
+    *ngIf="post.media_attachments.length > 0"
+    [src]="post.media_attachments[0].preview_url"
+  />
+  <div class="p-3">
+    <div [innerHTML]="post.content"></div>
+  </div>
+</div>
