@@ -16,7 +16,7 @@ export class HomePageComponent implements OnInit {
   public title: string = 'Angular Mastodon Demo';
   public description: string = 'A simple Mastodon client';
 
-  public posts!: Observable<Post[]>;
+  public posts!: Post[];
 
   public constructor(
     private timelineService: TimelineService,
@@ -24,7 +24,9 @@ export class HomePageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.posts = this.timelineService.getTimeline();
+    this.timelineService.getTimeline().subscribe((res) => {
+      this.posts = res;
+    });
   }
 
   public updateBookmarks(update: { post: Post; isBookmarked: boolean }): void {

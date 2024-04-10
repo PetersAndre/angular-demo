@@ -27,6 +27,7 @@
         <select
           class="form-control"
           id="rating"
+          type="number"
           formControlName="rating"
           name="rating"
         >
@@ -44,16 +45,24 @@
         Submit
       </button>
     </form>
-    <div *ngFor="let review of reviews">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">{{ review.author }}</h5>
-          <p class="card-text">{{ review.content }}</p>
-
-          <i class="bi bi-hand-thumbs-down"></i>
-          <i class="bi bi-dash-square"></i>
-          <i class="bi bi-hand-thumbs-up"></i>
-        </div>
+    <div class="card mb-3 mt-3" *ngFor="let review of reviews">
+      <div class="card-body">
+        <h5 class="card-title">{{ review.author }}</h5>
+        <p class="card-text">{{ review.content }}</p>
+        <ng-container [ngSwitch]="review.rating.toString()">
+          <i
+            *ngSwitchCase="ReviewRating.Negative.toString()"
+            class="bi bi-hand-thumbs-down text-danger"
+          ></i>
+          <i
+            *ngSwitchCase="ReviewRating.Neutral.toString()"
+            class="bi bi-dash-square text-warning"
+          ></i>
+          <i
+            *ngSwitchCase="ReviewRating.Positive.toString()"
+            class="bi bi-hand-thumbs-up text-success"
+          ></i>
+        </ng-container>
       </div>
     </div>
   </div>

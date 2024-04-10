@@ -1,9 +1,6 @@
 <div class="bg-body-secondary">
   <div class="container-md">
-    <div
-      *ngFor="let post of posts | async"
-      class="d-flex justify-content-center"
-    >
+    <div *ngFor="let post of posts" class="d-flex justify-content-center">
       <app-post [post]="post" (bookmarked)="updateBookmarks($event)"></app-post>
     </div>
   </div>

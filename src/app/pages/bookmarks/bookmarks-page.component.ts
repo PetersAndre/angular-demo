@@ -12,12 +12,12 @@ import { Observable, of } from 'rxjs';
   imports: [PostComponent, CommonModule],
 })
 export class BookmarksPageComponent implements OnInit {
-  public posts!: Observable<Post[]>;
+  public posts!: Post[];
 
   constructor(private bookmarkService: BookmarkService) {}
 
   ngOnInit(): void {
-    this.posts = of(this.bookmarkService.getBookmarks());
+    this.posts = this.bookmarkService.getBookmarks();
   }
 
   public updateBookmarks(event: any): void {
