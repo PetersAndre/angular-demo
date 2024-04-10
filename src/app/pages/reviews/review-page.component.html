@@ -5,6 +5,11 @@
         <label for="author" class="form-label">Author</label>
         <input
           class="form-control"
+          [ngClass]="{
+            'is-invalid':
+              formGroup.get('author')?.invalid &&
+              formGroup.get('author')?.touched
+          }"
           type="text"
           id="author"
           rows="3"
@@ -16,6 +21,11 @@
         <label for="content" class="form-label">Review</label>
         <textarea
           class="form-control"
+          [ngClass]="{
+            'is-invalid':
+              formGroup.get('content')?.invalid &&
+              formGroup.get('content')?.touched
+          }"
           id="content"
           rows="3"
           formControlName="content"
